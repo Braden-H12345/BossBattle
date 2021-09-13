@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] Text healthText;
     //[SerializeField] Text treasureText;
     [SerializeField] int _maxHealth = 3;
-    private int treasureCount = 0;
+    //private int treasureCount = 0;
     int _currentHealth;
     private bool isInvincible;
     

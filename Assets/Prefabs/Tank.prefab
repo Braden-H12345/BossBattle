@@ -249,7 +249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endOfTurret: {fileID: 83937018362800272}
-  _projectile: {fileID: 4832365889448340233, guid: 864404092a3765a4e95da48c1fdbb0ae,
+  _projectile: {fileID: 7122542999713362361, guid: 864404092a3765a4e95da48c1fdbb0ae,
+    type: 3}
+  _bigProjectile: {fileID: -1439534825621170603, guid: 58f5f160d5930c2468fb26f39114f7fa,
     type: 3}
 --- !u!1 &6779968465492444975
 GameObject:

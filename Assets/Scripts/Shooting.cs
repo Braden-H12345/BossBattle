@@ -9,7 +9,9 @@ public class Shooting : MonoBehaviour
     [SerializeField] GameObject _endOfTurret;
 
     [SerializeField] Rigidbody _projectile;
+    [SerializeField] Rigidbody _bigProjectile;
 
+    bool _allowNextBig = true;
     bool _allowNextBurst = true;
     //will have different modes of shooting for now semi auto and burst fire. might add more such as automatic or a shotgun-type of blast.
     private int _shootingMode;
@@ -34,7 +36,13 @@ public class Shooting : MonoBehaviour
             Debug.Log("Burst Fire");
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _shootingMode = 3;
+            Debug.Log("Big One");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Fire();
             Debug.Log("Bang!!!!");
@@ -60,6 +68,14 @@ public class Shooting : MonoBehaviour
                 StartCoroutine(Burst());
             }
         }
+
+        if (_shootingMode == 3)
+        {
+            if (_allowNextBig)
+            {
+                StartCoroutine(BigOne());
+            }
+        }
     }
 
     IEnumerator Burst()
@@ -76,5 +92,15 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         _allowNextBurst = true;
 
+    }
+
+    IEnumerator BigOne()
+    {
+        _allowNextBig = false;
+        Rigidbody clone;
+        clone = Instantiate(_bigProjectile, _endOfTurret.transform.position, _endOfTurret.transform.rotation);
+        clone.velocity = _endOfTurret.transform.forward * 5;
+        yield return new WaitForSeconds(30f);
+        _allowNextBig = true;
     }
 }

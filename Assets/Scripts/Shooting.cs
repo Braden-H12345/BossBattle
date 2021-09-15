@@ -11,6 +11,10 @@ public class Shooting : MonoBehaviour
     [SerializeField] Rigidbody _projectile;
     [SerializeField] Rigidbody _bigProjectile;
 
+    [SerializeField] ParticleSystem _shootingParticles;
+    [SerializeField] AudioClip _shootingSound;
+    [SerializeField] Transform _particlePosition;
+
     bool _allowNextBig = true;
     bool _allowNextBurst = true;
     //will have different modes of shooting for now semi auto and burst fire. might add more such as automatic or a shotgun-type of blast.
@@ -30,7 +34,7 @@ public class Shooting : MonoBehaviour
             Debug.Log("Semi-Auto Mode");
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             _shootingMode = 2;
             Debug.Log("Burst Fire");
@@ -52,8 +56,10 @@ public class Shooting : MonoBehaviour
     private void Fire()
     {
         //todo: visuals and sounds
-        if(_shootingMode == 1)
+        if (_shootingMode == 1)
         {
+            Feedback();
+
             Rigidbody clone;
             clone = Instantiate(_projectile, _endOfTurret.transform.position, _endOfTurret.transform.rotation);
 
@@ -61,10 +67,11 @@ public class Shooting : MonoBehaviour
             clone.velocity = _endOfTurret.transform.forward * 10;
         }
 
-        if(_shootingMode == 2)
+        if (_shootingMode == 2)
         {
             if (_allowNextBurst)
             {
+                Feedback();
                 StartCoroutine(Burst());
             }
         }
@@ -73,8 +80,24 @@ public class Shooting : MonoBehaviour
         {
             if (_allowNextBig)
             {
+                Feedback();
                 StartCoroutine(BigOne());
             }
+        }
+    }
+
+    void Feedback()
+    {
+        if (_shootingParticles != null)
+        {
+            _shootingParticles = Instantiate(_shootingParticles, _particlePosition.position, Quaternion.identity);
+            _shootingParticles.Play();
+
+        }
+
+        if (_shootingSound != null)
+        {
+            AudioHelper.PlayClip2D(_shootingSound, 1f);
         }
     }
 

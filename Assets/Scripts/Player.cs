@@ -7,11 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TankController))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] Text healthText;
     //[SerializeField] Text treasureText;
-    [SerializeField] int _maxHealth = 3;
     //private int treasureCount = 0;
-    int _currentHealth;
     private bool isInvincible;
     
 
@@ -29,7 +26,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _currentHealth = _maxHealth;
+
     }
 
     public void IncreaseTreasure()
@@ -37,15 +34,20 @@ public class Player : MonoBehaviour
         //treasureCount += 1;
         //treasureText.text = "Treasure: " + treasureCount;
     }
+
+    
     public void IncreaseHealth(int amount)
     {
+        /*
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         _currentHealth += amount;
         healthText.text = "Health: " + _currentHealth;
+        */
     }
 
     public void DecreaseHealth(int amount)
     {
+        /*
         if (isInvincible == false)
         {
             _currentHealth -= amount;
@@ -56,13 +58,16 @@ public class Player : MonoBehaviour
                 Kill();
             }
         }
+        */
     }
 
     public void Kill()
     {
+        /*
         _currentHealth = 0;
         healthText.text = "Health: " + _currentHealth;
         gameObject.SetActive(false);
         //play partciles & sounds
-    }
+        */
+    } 
 }

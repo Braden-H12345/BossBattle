@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29809df9be5ec9340bd0ea0ca537f6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isEnemyProjectile: 1

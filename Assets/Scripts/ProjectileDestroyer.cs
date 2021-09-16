@@ -5,6 +5,9 @@ using UnityEngine;
 public class ProjectileDestroyer : MonoBehaviour
 {
     [SerializeField] bool _isEnemyProjectile;
+
+    [SerializeField] ParticleSystem _collisionParticles;
+    [SerializeField] AudioClip _collisionSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,7 @@ public class ProjectileDestroyer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //TODO: visuals and sounds
+        Feedback();
         IDamageable test = collision.collider.gameObject.GetComponent<IDamageable>();
         Player player = collision.gameObject.GetComponent<Player>();
 
@@ -52,4 +55,20 @@ public class ProjectileDestroyer : MonoBehaviour
 
         Destroy(this.gameObject);
     }
+
+    void Feedback()
+    {
+        if (_collisionParticles != null)
+        {
+            _collisionParticles = Instantiate(_collisionParticles, this.transform.position, Quaternion.identity);
+            _collisionParticles.Play();
+
+        }
+
+        if (_collisionSound != null)
+        {
+            AudioHelper.PlayClip2D(_collisionSound, 1f);
+        }
+    }
+
 }

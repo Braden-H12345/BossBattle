@@ -55,7 +55,6 @@ public class Shooting : MonoBehaviour
 
     private void Fire()
     {
-        //todo: visuals and sounds
         if (_shootingMode == 1)
         {
             Feedback();
@@ -92,7 +91,6 @@ public class Shooting : MonoBehaviour
         {
             _shootingParticles = Instantiate(_shootingParticles, _particlePosition.position, Quaternion.identity);
             _shootingParticles.Play();
-
         }
 
         if (_shootingSound != null)

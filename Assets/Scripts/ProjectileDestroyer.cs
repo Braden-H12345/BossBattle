@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileDestroyer : MonoBehaviour
 {
+    private float elapsedTime;
     [SerializeField] bool _isEnemyProjectile;
 
     [SerializeField] ParticleSystem _collisionParticles;
@@ -17,9 +18,16 @@ public class ProjectileDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       if(elapsedTime >= 12f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
+    private void FixedUpdate()
+    {
+        elapsedTime += Time.deltaTime;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         Feedback();

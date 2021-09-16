@@ -553,6 +553,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &4769618629230250298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2380254339945554845}
+  m_Layer: 0
+  m_Name: DashPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2380254339945554845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769618629230250298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.34, y: 0, z: -3.95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8313244741405285141}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6084037687120759182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1524,8 @@ GameObject:
   - component: {fileID: 8313244741405285141}
   - component: {fileID: 8313244741405285226}
   - component: {fileID: 8313244741405285224}
+  - component: {fileID: 7910614178395506384}
+  - component: {fileID: -772302933620831272}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -1513,6 +1545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8313244740172331417}
+  - {fileID: 2380254339945554845}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1548,3 +1581,32 @@ MonoBehaviour:
   _killParticles: {fileID: 5202444457055041375, guid: f6ba9a362c7626b4aa9d947c820be312,
     type: 3}
   _killSound: {fileID: 8300000, guid: 482645c3ff9918f489ad332d1edfb855, type: 3}
+--- !u!114 &7910614178395506384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313244741405285225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6e1bf6b97ff5c4abdf1ffe61749e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6779968465453755553, guid: fc0191246c2717f43954f3f9000fecbd, type: 3}
+  dashParticles: {fileID: 5202444457055041375, guid: f6ba9a362c7626b4aa9d947c820be312,
+    type: 3}
+  dashSound: {fileID: 8300000, guid: b3f3919ada9087a4db3a75a31551623f, type: 3}
+  dashParticlePosition: {fileID: 4769618629230250298}
+--- !u!114 &-772302933620831272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313244741405285225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cda8b191c3e2c04eaa6775b0273deef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

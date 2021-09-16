@@ -6,7 +6,9 @@ public class BossMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Player player;
-
+    [SerializeField] ParticleSystem dashParticles;
+    [SerializeField] AudioClip dashSound;
+    [SerializeField] GameObject dashParticlePosition;
     private bool isDashing = false;
     private float timeElapsed = 0f;
     void Start()
@@ -17,8 +19,8 @@ public class BossMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .03f);
         transform.LookAt(player.transform);
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .016f);
 
         if (!isDashing && timeElapsed >= 6)
         {
@@ -33,7 +35,20 @@ public class BossMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
+        if (dashParticles != null)
+        {
+            dashParticles = Instantiate(dashParticles, dashParticlePosition.transform.position, Quaternion.identity);
+            dashParticles.Play();
+
+        }
+
+        if (dashSound != null)
+        {
+            AudioHelper.PlayClip2D(dashSound, 1f);
+        }
+
         isDashing = true;
+
         for(int i=0; i<9;i++)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .9f);

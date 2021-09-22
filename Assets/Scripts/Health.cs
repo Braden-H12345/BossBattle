@@ -1,15 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour, IDamageable
 {
+    public event Action<int> PlayerDamaged = delegate { };
+    public event Action<int> BossDamaged = delegate { };
+
     [SerializeField] int _maxHealth;
     [SerializeField] ParticleSystem _damageParticles;
     [SerializeField] AudioClip _damageSound;
     [SerializeField] ParticleSystem _killParticles;
     [SerializeField] AudioClip _killSound;
 
+    public int MaxHealth
+    {
+        get => _maxHealth;
+    }
+
+    public int CurrentHealth
+    {
+        get => _currentHealth;
+    }
 
     private int _currentHealth;
 
@@ -22,6 +35,16 @@ public class Health : MonoBehaviour, IDamageable
     {
         _currentHealth -= damage;
         Feedback();
+
+        if (this.gameObject.GetComponent<BossMovement>() != null)
+        {
+            BossDamaged.Invoke(damage);
+        }
+
+        if(this.gameObject.GetComponent<Player>() != null)
+        {
+            PlayerDamaged.Invoke(damage);
+        }
         if (_currentHealth <= 0)
         {
             KillFeedback();

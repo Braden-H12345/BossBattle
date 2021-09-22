@@ -19,7 +19,7 @@ public class BossMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .03f);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .01f);
         transform.LookAt(player.transform);
 
         if (!isDashing && timeElapsed >= 6)

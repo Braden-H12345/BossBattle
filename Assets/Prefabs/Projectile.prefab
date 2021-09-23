@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnemyProjectile: 0
+  _damage: 25
   _collisionParticles: {fileID: 5202444457055041375, guid: f6ba9a362c7626b4aa9d947c820be312,
     type: 3}
   _collisionSound: {fileID: 8300000, guid: d8e594eb49617c6469c963fc61651d8c, type: 3}

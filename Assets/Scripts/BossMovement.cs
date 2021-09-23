@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BossMovement : MonoBehaviour
 {
@@ -9,8 +10,12 @@ public class BossMovement : MonoBehaviour
     [SerializeField] ParticleSystem dashParticles;
     [SerializeField] AudioClip dashSound;
     [SerializeField] GameObject dashParticlePosition;
+    [SerializeField] NavMeshAgent _agent;
+    [SerializeField] LayerMask _layerIgnore;
     private bool isDashing = false;
     private float timeElapsed = 0f;
+    private bool isBlocked = false;
+
     void Start()
     {
         
@@ -19,12 +24,28 @@ public class BossMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .01f);
         transform.LookAt(player.transform);
+        _agent.SetDestination(player.transform.position);
+
+        RaycastHit hit;
+        if(Physics.Linecast(transform.position, player.transform.position, out hit, _layerIgnore))
+        {
+            
+            Debug.Log(hit.transform.gameObject.name);
+            isBlocked = true;
+        }
+        else
+        {
+            isBlocked = false;
+        }
+
 
         if (!isDashing && timeElapsed >= 6)
         {
-            StartCoroutine(Dash());
+            if (!isBlocked)
+            {
+                StartCoroutine(Dash());
+            }
         }
     }
 

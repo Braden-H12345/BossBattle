@@ -6,7 +6,7 @@ public class ProjectileDestroyer : MonoBehaviour
 {
     private float elapsedTime;
     [SerializeField] bool _isEnemyProjectile;
-
+    [SerializeField] int _damage;
     [SerializeField] ParticleSystem _collisionParticles;
     [SerializeField] AudioClip _collisionSound;
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class ProjectileDestroyer : MonoBehaviour
             IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
             if (playerDmg != null)
             {
-                playerDmg.takeDamage(100);
+                playerDmg.takeDamage(_damage);
             }
         }
 
@@ -57,7 +57,7 @@ public class ProjectileDestroyer : MonoBehaviour
         {
             if (test != null)
             {
-                test.takeDamage(100);
+                test.takeDamage(_damage);
             }
         }
 

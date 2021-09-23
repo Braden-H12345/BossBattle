@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 553976012983942074}
   - component: {fileID: 132103205054298364}
   - component: {fileID: 5022946776916186908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7407814745444417956}
   - component: {fileID: 3099407987072597922}
   - component: {fileID: 1981480817892982820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 2425082844099728898}
   - component: {fileID: 7654540095692343634}
   - component: {fileID: 5151904247223264822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 1767024069221233832}
   - component: {fileID: 5775832359287787659}
   - component: {fileID: 7847193864994973310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 955494103460850081}
   - component: {fileID: 8302570881316470030}
   - component: {fileID: 6828355569603909102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 8618545996172864330}
   - component: {fileID: 4368598096890555611}
   - component: {fileID: 7881793175560344127}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 8033301942509837175}
   - component: {fileID: 4826254797637668850}
   - component: {fileID: 8604387691935193661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2380254339945554845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DashPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 581850663935947043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 4490921744424361400}
   - component: {fileID: 2001725216587037374}
   - component: {fileID: 3588210638480959756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 6809876260894035052}
   - component: {fileID: 7985017403950951346}
   - component: {fileID: 7912451436279831121}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 1146384574494232989}
   - component: {fileID: 7231038772206423557}
   - component: {fileID: 6333281736780140279}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 8313244739459244895}
   - component: {fileID: 8313244739459244889}
   - component: {fileID: 8313244739459244894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 8313244739685496033}
   - component: {fileID: 8313244739685496035}
   - component: {fileID: 8313244739685496032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CannonEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ GameObject:
   - component: {fileID: 8313244739897297663}
   - component: {fileID: 8313244739897297657}
   - component: {fileID: 8313244739897297662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CannonEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,7 +1105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8313244740172331417}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 8313244740267954800}
   - component: {fileID: 8313244740267954802}
   - component: {fileID: 8313244740267954803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CannonArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 8313244740322349810}
   - component: {fileID: 8313244740322349820}
   - component: {fileID: 8313244740322349821}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1298,7 +1298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8313244740722500161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 8313244741009311514}
   - component: {fileID: 8313244741009311492}
   - component: {fileID: 8313244741009311493}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CannonArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8313244741137115783}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 8313244741239008235}
   - component: {fileID: 8313244741239008149}
   - component: {fileID: 8313244741239008234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 8313244741405285224}
   - component: {fileID: 7910614178395506384}
   - component: {fileID: -772302933620831272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1598,6 +1598,10 @@ MonoBehaviour:
     type: 3}
   dashSound: {fileID: 8300000, guid: b3f3919ada9087a4db3a75a31551623f, type: 3}
   dashParticlePosition: {fileID: 4769618629230250298}
+  _agent: {fileID: 0}
+  _layerIgnore:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-772302933620831272
 MonoBehaviour:
   m_ObjectHideFlags: 0

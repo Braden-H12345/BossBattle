@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        Health = _objectToTrack.GetComponent<Health>();
+         Health = _objectToTrack.GetComponent<Health>();
         _healthSlider.maxValue = Health.MaxHealth;
         _healthSlider.value = Health.MaxHealth;
 

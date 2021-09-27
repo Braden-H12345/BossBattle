@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7162986942816281230}
   - component: {fileID: 7122542999713362361}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: EnemyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29809df9be5ec9340bd0ea0ca537f6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isEnemyProjectile: 0
-  _damage: 15
+  _isEnemyProjectile: 1
+  _damage: 25
   _collisionParticles: {fileID: 5202444457055041375, guid: f6ba9a362c7626b4aa9d947c820be312,
     type: 3}
   _collisionSound: {fileID: 8300000, guid: d8e594eb49617c6469c963fc61651d8c, type: 3}

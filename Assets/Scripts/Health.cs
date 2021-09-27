@@ -17,6 +17,8 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] Transform pillarThing;
     [SerializeField] GameObject pillar;
 
+
+    public bool _isBoss;
     private bool _isPhaseTwo = false;
 
     public bool PhaseTwo
@@ -43,7 +45,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public void Update()
     {
-        if (_isPhaseTwo == false)
+        if (_isPhaseTwo == false && _isBoss == true)
         {
             if (((float)_currentHealth / _maxHealth) <= .5)
             {

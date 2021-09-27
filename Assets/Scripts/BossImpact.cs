@@ -24,7 +24,7 @@ public class BossImpact : MonoBehaviour
         {
             IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
 
-            playerDmg.takeDamage(5);
+            playerDmg.takeDamage(15);
         }
     }
 }

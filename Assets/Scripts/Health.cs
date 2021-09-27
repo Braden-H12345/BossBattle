@@ -8,11 +8,21 @@ public class Health : MonoBehaviour, IDamageable
     public event Action<int> PlayerDamaged = delegate { };
     public event Action<int> BossDamaged = delegate { };
 
-    [SerializeField] int _maxHealth;
+    [SerializeField] int _maxHealth = 100;
     [SerializeField] ParticleSystem _damageParticles;
     [SerializeField] AudioClip _damageSound;
     [SerializeField] ParticleSystem _killParticles;
     [SerializeField] AudioClip _killSound;
+
+    [SerializeField] Transform pillarThing;
+    [SerializeField] GameObject pillar;
+
+    private bool _isPhaseTwo = false;
+
+    public bool PhaseTwo
+    {
+        get => _isPhaseTwo;
+    }
 
     public int MaxHealth
     {
@@ -29,6 +39,18 @@ public class Health : MonoBehaviour, IDamageable
     void Awake()
     {
         _currentHealth = _maxHealth;
+    }
+
+    public void Update()
+    {
+        if (_isPhaseTwo == false)
+        {
+            if (((float)_currentHealth / _maxHealth) <= .5)
+            {
+                _currentHealth = _maxHealth;
+                _isPhaseTwo = true;
+            }
+        }
     }
 
     public void takeDamage(int damage)

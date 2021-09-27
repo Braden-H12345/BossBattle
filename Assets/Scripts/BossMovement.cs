@@ -15,23 +15,24 @@ public class BossMovement : MonoBehaviour
     private bool isDashing = false;
     private float timeElapsed = 0f;
     private bool isBlocked = false;
+    private Rigidbody _rb;
 
     void Start()
     {
-        
+        _rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform);
+        //transform.LookAt(player.transform);
         _agent.SetDestination(player.transform.position);
 
         RaycastHit hit;
         if(Physics.Linecast(transform.position, player.transform.position, out hit, _layerIgnore))
         {
             
-            Debug.Log(hit.transform.gameObject.name);
+            
             isBlocked = true;
         }
         else
@@ -56,6 +57,8 @@ public class BossMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
+        float tempAccel = _agent.acceleration;
+        float tempSpeed = _agent.speed;
         if (dashParticles != null)
         {
             dashParticles = Instantiate(dashParticles, dashParticlePosition.transform.position, Quaternion.identity);
@@ -70,10 +73,15 @@ public class BossMovement : MonoBehaviour
 
         isDashing = true;
 
-        for(int i=0; i<9;i++)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .9f);
-        }
+
+        _rb.velocity = transform.forward * 50f;
+
+        yield return new WaitForSeconds(.25f);
+
+        _rb.velocity = transform.forward * 0f;
+
+        _agent.acceleration = tempAccel;
+        _agent.speed = tempSpeed;
         yield return new WaitForSeconds(12f);
         isDashing = false;
     }

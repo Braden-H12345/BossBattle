@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070938948605030119}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: endOfTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6779968464548895524}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 6779968465079981340}
   - component: {fileID: 6779968465079981342}
   - component: {fileID: 6779968465079981341}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Tread_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 6779968465453755553}
   - component: {fileID: 1948964026386022324}
   - component: {fileID: 7423185679579071180}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,6 +275,7 @@ MonoBehaviour:
   _killParticles: {fileID: 5202444457055041375, guid: f6ba9a362c7626b4aa9d947c820be312,
     type: 3}
   _killSound: {fileID: 8300000, guid: faddb8c17ef5afa4f8f58fb7f3c5f786, type: 3}
+  _isBoss: 0
 --- !u!1 &6779968465492444975
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ GameObject:
   - component: {fileID: 6779968465492444968}
   - component: {fileID: 6779968465492444970}
   - component: {fileID: 6779968465492444969}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +367,7 @@ GameObject:
   - component: {fileID: 6779968465759683519}
   - component: {fileID: 6779968465759683513}
   - component: {fileID: 6779968465759683512}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Tread_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +446,7 @@ GameObject:
   - component: {fileID: 6779968465850594092}
   - component: {fileID: 6779968465850594094}
   - component: {fileID: 6779968465850594093}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

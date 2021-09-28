@@ -16,6 +16,7 @@ public class BossMovement : MonoBehaviour
     private float timeElapsed = 0f;
     private bool isBlocked = false;
     private Rigidbody _rb;
+    private bool _phaseTwo = false;
 
     void Start()
     {
@@ -25,6 +26,11 @@ public class BossMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if(GetComponent<Health>().PhaseTwo == true)
+        {
+            _phaseTwo = true;
+        }
         //transform.LookAt(player.transform);
         _agent.SetDestination(player.transform.position);
 
@@ -74,15 +80,24 @@ public class BossMovement : MonoBehaviour
         isDashing = true;
 
 
-        _rb.velocity = transform.forward * 50f;
+        if(_phaseTwo == false)
+        {
+            _rb.velocity = transform.forward * 30f;
+            yield return new WaitForSeconds(.1f);
+        }
 
-        yield return new WaitForSeconds(.25f);
+        if(_phaseTwo == true)
+        {
+            _rb.velocity = transform.forward * 60f;
+            yield return new WaitForSeconds(.1f);
+        }
+
 
         _rb.velocity = transform.forward * 0f;
 
         _agent.acceleration = tempAccel;
         _agent.speed = tempSpeed;
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(5f);
         isDashing = false;
     }
 }

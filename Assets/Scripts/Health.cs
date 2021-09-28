@@ -14,9 +14,6 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] ParticleSystem _killParticles;
     [SerializeField] AudioClip _killSound;
 
-    [SerializeField] Transform pillarThing;
-    [SerializeField] GameObject pillar;
-
 
     public bool _isBoss;
     private bool _isPhaseTwo = false;
@@ -51,6 +48,7 @@ public class Health : MonoBehaviour, IDamageable
             {
                 _currentHealth = _maxHealth;
                 _isPhaseTwo = true;
+                
             }
         }
     }

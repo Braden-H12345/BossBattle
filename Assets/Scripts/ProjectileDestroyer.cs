@@ -33,7 +33,7 @@ public class ProjectileDestroyer : MonoBehaviour
         Feedback();
         IDamageable test = collision.collider.gameObject.GetComponent<IDamageable>();
         Player player = collision.gameObject.GetComponent<Player>();
-
+        BossMovement boss = collision.gameObject.GetComponent<BossMovement>();
 
         //if it hits player and is an enemy projectile
         if (player != null && _isEnemyProjectile)
@@ -60,6 +60,7 @@ public class ProjectileDestroyer : MonoBehaviour
                 test.takeDamage(_damage);
             }
         }
+
 
         Destroy(this.gameObject);
     }

@@ -63,7 +63,7 @@ public class Shooting : MonoBehaviour
             clone = Instantiate(_projectile, _endOfTurret.transform.position, _endOfTurret.transform.rotation);
 
 
-            clone.velocity = _endOfTurret.transform.forward * 10;
+            clone.velocity = _endOfTurret.transform.forward * 20;
         }
 
         if (_shootingMode == 2)
@@ -107,7 +107,7 @@ public class Shooting : MonoBehaviour
         {
             Rigidbody clone;
             clone = Instantiate(_projectile, _endOfTurret.transform.position, _endOfTurret.transform.rotation);
-            clone.velocity = _endOfTurret.transform.forward * 10;
+            clone.velocity = _endOfTurret.transform.forward * 20;
             yield return new WaitForSecondsRealtime(_bulletWaitTime);
         }
         yield return new WaitForSeconds(.25f);
@@ -120,7 +120,7 @@ public class Shooting : MonoBehaviour
         _allowNextBig = false;
         Rigidbody clone;
         clone = Instantiate(_bigProjectile, _endOfTurret.transform.position, _endOfTurret.transform.rotation);
-        clone.velocity = _endOfTurret.transform.forward * 5;
+        clone.velocity = _endOfTurret.transform.forward * 9;
         yield return new WaitForSeconds(30f);
         _allowNextBig = true;
     }

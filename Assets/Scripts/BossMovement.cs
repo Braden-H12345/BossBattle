@@ -12,11 +12,18 @@ public class BossMovement : MonoBehaviour
     [SerializeField] GameObject dashParticlePosition;
     [SerializeField] NavMeshAgent _agent;
     [SerializeField] LayerMask _layerIgnore;
+
+    Coroutine _currentDash = null;
     private bool isDashing = false;
     private float timeElapsed = 0f;
     private bool isBlocked = false;
     private Rigidbody _rb;
     private bool _phaseTwo = false;
+
+    public bool DashReady
+    {
+        set => isDashing = value;
+    }
 
     void Start()
     {
@@ -51,7 +58,11 @@ public class BossMovement : MonoBehaviour
         {
             if (!isBlocked)
             {
-                StartCoroutine(Dash());
+                if(_currentDash != null)
+                {
+                    StopCoroutine(_currentDash);
+                }
+                _currentDash = StartCoroutine(Dash());
             }
         }
     }
@@ -63,8 +74,12 @@ public class BossMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
+        Debug.Log("Dashing");
+        isDashing = true;
         float tempAccel = _agent.acceleration;
         float tempSpeed = _agent.speed;
+
+        _agent.speed = 0;
         if (dashParticles != null)
         {
             dashParticles = Instantiate(dashParticles, dashParticlePosition.transform.position, Quaternion.identity);
@@ -77,8 +92,6 @@ public class BossMovement : MonoBehaviour
             AudioHelper.PlayClip2D(dashSound, 1f);
         }
 
-        isDashing = true;
-
 
         if(_phaseTwo == false)
         {
@@ -86,7 +99,7 @@ public class BossMovement : MonoBehaviour
             yield return new WaitForSeconds(.1f);
         }
 
-        if(_phaseTwo == true)
+        else
         {
             _rb.velocity = transform.forward * 60f;
             yield return new WaitForSeconds(.1f);
@@ -99,5 +112,6 @@ public class BossMovement : MonoBehaviour
         _agent.speed = tempSpeed;
         yield return new WaitForSeconds(5f);
         isDashing = false;
+        Debug.Log("Dashing!");
     }
 }

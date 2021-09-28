@@ -12,6 +12,9 @@ public class AreaAttack : MonoBehaviour
     [SerializeField] float _attackRadius;
     [SerializeField] LayerMask _enemyLayer;
     [SerializeField] GameObject _sphereVisuals;
+
+    Coroutine _currentArea;
+    private Rigidbody _rb;
     private Health _health;
     private int _maxHealth;
     private int _currentHealth;
@@ -24,6 +27,8 @@ public class AreaAttack : MonoBehaviour
     private bool _phaseTwo = false;
     void Start()
     {
+
+        _rb = GetComponent<Rigidbody>();
         _health = GetComponent<Health>();
     }
 
@@ -44,7 +49,12 @@ public class AreaAttack : MonoBehaviour
         {
             if (_attackReady)
             {
-                StartCoroutine(StartAreaAttack());
+                if(_currentArea != null)
+                {
+                    StopCoroutine(_currentArea);
+                }
+
+                _currentArea = StartCoroutine(StartAreaAttack());
                 _healthThreshold -= .1f;
             }
         }
@@ -53,14 +63,17 @@ public class AreaAttack : MonoBehaviour
 
     IEnumerator StartAreaAttack()
     {
+        _rb.velocity = transform.forward * 0;
         _attackReady = false;
         GameObject sphere = null;
+        GameObject sphere1 = null;
+
         float tempSpeed = _agent.speed;
         //stops movement
         _agent.speed = 0;
-        //stops shooting
-        BossShooting shoot = GetComponent<BossShooting>();
-        shoot.ShotReady = false;
+        //stops dashing
+        BossMovement dash = GetComponent<BossMovement>();
+        dash.DashReady = false;
 
         Vector3 largeRadius;
         largeRadius.x = 14;
@@ -71,44 +84,62 @@ public class AreaAttack : MonoBehaviour
         //attacks
         if (_phaseTwo == false)
         {
-            sphere = Instantiate(_sphereVisuals, _areaAttackSpot.position, _areaAttackSpot.rotation);
-
-            yield return new WaitForSeconds(.5f);
-            Collider[] hit = Physics.OverlapSphere(_areaAttackSpot.position, _attackRadius, _enemyLayer);
-            foreach (Collider player in hit)
+            for(int i=0; i<2;i++)
             {
-                Player playerObject = player.gameObject.GetComponent<Player>();
-                if (player != null)
-                {
-                    IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
-                    playerDmg.takeDamage(100);
-                }
+                sphere1 = Instantiate(_sphereVisuals, _areaAttackSpot.position, _areaAttackSpot.rotation);
+                yield return new WaitForSeconds(.25f);
+                Destroy(sphere1);
+                yield return new WaitForSeconds(.25f);
             }
-        }
-        else
+            sphere = Instantiate(_sphereVisuals, _areaAttackSpot.position, _areaAttackSpot.rotation);
+            while(_timeElapsed <= 1.5f)
             {
-            sphere = Instantiate(_sphereVisuals, _areaAttackPhaseTwo.position, _areaAttackPhaseTwo.rotation);
-            sphere.transform.localScale = largeRadius;
-            yield return new WaitForSeconds(.5f);
-            Collider[] hit = Physics.OverlapSphere(_areaAttackPhaseTwo.position, 7f, _enemyLayer);
+                Collider[] hit = Physics.OverlapSphere(_areaAttackSpot.position, _attackRadius, _enemyLayer);
                 foreach (Collider player in hit)
                 {
                     Player playerObject = player.gameObject.GetComponent<Player>();
                     if (player != null)
                     {
                         IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
-                        playerDmg.takeDamage(100);
+                        playerDmg.takeDamage(5);
+                        yield return new WaitForSeconds(.25f);
                     }
                 }
+                yield return null;
+                _timeElapsed += Time.deltaTime;
             }
+
+        }
+        else
+        {
+            sphere = Instantiate(_sphereVisuals, _areaAttackPhaseTwo.position, _areaAttackPhaseTwo.rotation);
+            sphere.transform.localScale = largeRadius;
+            yield return new WaitForSeconds(.5f);
+            while (_timeElapsed <= 3f)
+            {
+                Collider[] hit = Physics.OverlapSphere(_areaAttackPhaseTwo.position, 7f, _enemyLayer);
+                foreach (Collider player in hit)
+                {
+                    Player playerObject = player.gameObject.GetComponent<Player>();
+                    if (player != null)
+                    {
+                        IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
+                        playerDmg.takeDamage(5);
+                        yield return new WaitForSeconds(.1f);
+                    }
+                }
+                yield return null;
+                _timeElapsed += Time.deltaTime;
+            }
+        }
 
         Destroy(sphere);
         _timeElapsed = 0f;
-        yield return new WaitForSeconds(.75f);
         //start moving
         _agent.speed = tempSpeed;
-        //start shooting
-        shoot.ShotReady = true;
+        //start dashing
+        dash.DashReady = true;
+
         yield return new WaitForSeconds(4f);
         _attackReady = true;
     }

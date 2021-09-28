@@ -8,6 +8,7 @@ public class BossShooting : MonoBehaviour
     [SerializeField] Transform _shotPos1;
     [SerializeField] Rigidbody _projectile;
 
+    Coroutine _currentShot;
     private int _shotPosChooser;
     private bool _shotReady = true;
     private float _timeElapsed = 0f;
@@ -33,7 +34,12 @@ public class BossShooting : MonoBehaviour
         }
         if(_shotReady && _timeElapsed >= 3)
         {
-            StartCoroutine(Shoot());
+            if(_currentShot != null)
+            {
+                StopCoroutine(_currentShot);
+            }
+            
+            _currentShot = StartCoroutine(Shoot());
         }
     }
 

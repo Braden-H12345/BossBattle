@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnemyProjectile: 0
-  _damage: 1000
+  _damage: 400
   _collisionParticles: {fileID: 0}
   _collisionSound: {fileID: 0}
+  airTime: 12

@@ -74,7 +74,6 @@ public class BossMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
-        Debug.Log("Dashing");
         isDashing = true;
         float tempAccel = _agent.acceleration;
         float tempSpeed = _agent.speed;
@@ -112,6 +111,5 @@ public class BossMovement : MonoBehaviour
         _agent.speed = tempSpeed;
         yield return new WaitForSeconds(5f);
         isDashing = false;
-        Debug.Log("Dashing!");
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossImpact : MonoBehaviour
 {
+    [SerializeField] LayerMask walls;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,17 @@ public class BossImpact : MonoBehaviour
             IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
 
             playerDmg.takeDamage(15);
+        }
+
+        LayerMask collisionMask = collision.gameObject.layer;
+        if (collisionMask == walls)
+        {
+            IDamageable wallDmg = collision.gameObject.GetComponent<IDamageable>();
+            if (wallDmg != null)
+            {
+                wallDmg.takeDamage(90);
+            }
+
         }
     }
 }

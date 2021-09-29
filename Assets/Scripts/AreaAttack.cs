@@ -12,6 +12,7 @@ public class AreaAttack : MonoBehaviour
     [SerializeField] float _attackRadius;
     [SerializeField] LayerMask _enemyLayer;
     [SerializeField] GameObject _sphereVisuals;
+    [SerializeField] AudioClip _attackSounds;
 
     Coroutine _currentArea;
     private Rigidbody _rb;
@@ -94,6 +95,7 @@ public class AreaAttack : MonoBehaviour
                 yield return new WaitForSeconds(.1f);
             }
             sphere = Instantiate(_sphereVisuals, _areaAttackSpot.position, _areaAttackSpot.rotation);
+            Feedback();
             while(_timeElapsed <= 1.5f)
             {
                 Collider[] hit = Physics.OverlapSphere(_areaAttackSpot.position, _attackRadius, _enemyLayer);
@@ -123,6 +125,7 @@ public class AreaAttack : MonoBehaviour
             }
             sphere = Instantiate(_sphereVisuals, _areaAttackPhaseTwo.position, _areaAttackPhaseTwo.rotation);
             sphere.transform.localScale = largeRadius;
+            Feedback();
             while (_timeElapsed <= 3f)
             {
                 Collider[] hit = Physics.OverlapSphere(_areaAttackPhaseTwo.position, 8f, _enemyLayer);
@@ -149,5 +152,13 @@ public class AreaAttack : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
         _attackReady = true;
+    }
+
+    private void Feedback()
+    {
+        if (_attackSounds != null)
+        {
+            AudioHelper.PlayClip2D(_attackSounds, 1f);
+        }
     }
 }

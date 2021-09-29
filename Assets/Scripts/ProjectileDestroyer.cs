@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ProjectileDestroyer : MonoBehaviour
 {
-    private float elapsedTime;
     [SerializeField] bool _isEnemyProjectile;
     [SerializeField] int _damage;
     [SerializeField] ParticleSystem _collisionParticles;
     [SerializeField] AudioClip _collisionSound;
+    [SerializeField] float airTime = 12f;
+
+    private float elapsedTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class ProjectileDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(elapsedTime >= 12f)
+       if(elapsedTime >= airTime)
         {
             Destroy(this.gameObject);
         }

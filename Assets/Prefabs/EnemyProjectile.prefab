@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnemyProjectile: 1
-  _damage: 25
+  _damage: 18
   _collisionParticles: {fileID: 5202444457055041375, guid: f6ba9a362c7626b4aa9d947c820be312,
     type: 3}
   _collisionSound: {fileID: 8300000, guid: d8e594eb49617c6469c963fc61651d8c, type: 3}
@@ -160,5 +160,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd46d0d6df0c2094fbf0ace5087512ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 18
-  _rotationForce: 60
+  _force: 13
+  _rotationForce: 20

@@ -7,6 +7,8 @@ public class BossShooting : MonoBehaviour
     [SerializeField] Transform _shotPos2;
     [SerializeField] Transform _shotPos1;
     [SerializeField] Rigidbody _projectile;
+    [SerializeField] ParticleSystem _shotParticles;
+    [SerializeField] AudioClip _shotSound;
 
     Coroutine _currentShot;
     private int _shotPosChooser;
@@ -55,16 +57,19 @@ public class BossShooting : MonoBehaviour
 
         if(_shotPosChooser == 1)
         {
+            Feedback1();
             position = _shotPos1;
             _shotPosChooser = 2;
         }
         else if(_shotPosChooser == 2)
         {
+            Feedback2();
             position = _shotPos2;
             _shotPosChooser = 1;
         }
         else
         {
+            Feedback3();
             position = _shotPos2;
             Rigidbody clone1;
             clone1 = Instantiate(_projectile, _shotPos1.transform.position, _shotPos1.transform.rotation);
@@ -81,5 +86,51 @@ public class BossShooting : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         _shotReady = true;
+    }
+
+    private void Feedback1()
+    {
+        if (_shotParticles != null)
+        {
+            _shotParticles = Instantiate(_shotParticles, _shotPos1.position, Quaternion.identity);
+            _shotParticles.Play();
+        }
+
+        if (_shotSound != null)
+        {
+            AudioHelper.PlayClip2D(_shotSound, 1f);
+        }
+    }
+
+    private void Feedback2()
+    {
+        if (_shotParticles != null)
+        {
+            _shotParticles = Instantiate(_shotParticles, _shotPos2.position, Quaternion.identity);
+            _shotParticles.Play();
+        }
+
+        if (_shotSound != null)
+        {
+            AudioHelper.PlayClip2D(_shotSound, 1f);
+        }
+    }
+
+    private void Feedback3()
+    {
+        if (_shotParticles != null)
+        {
+            _shotParticles = Instantiate(_shotParticles, _shotPos1.position, Quaternion.identity);
+            _shotParticles.Play();
+
+            ParticleSystem _shotParticles2;
+            _shotParticles2 = Instantiate(_shotParticles, _shotPos2.position, Quaternion.identity);
+            _shotParticles2.Play();
+        }
+
+        if (_shotSound != null)
+        {
+            AudioHelper.PlayClip2D(_shotSound, 1f);
+        }
     }
 }

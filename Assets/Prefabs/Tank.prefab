@@ -252,7 +252,7 @@ MonoBehaviour:
     type: 3}
   _bigProjectile: {fileID: -1439534825621170603, guid: 58f5f160d5930c2468fb26f39114f7fa,
     type: 3}
-  _shootingParticles: {fileID: 5202444457055041375, guid: f6ba9a362c7626b4aa9d947c820be312,
+  _shootingParticles: {fileID: 5504366518324814288, guid: 273f52d11e6b82e45a33307c566954f5,
     type: 3}
   _shootingSound: {fileID: 8300000, guid: faddb8c17ef5afa4f8f58fb7f3c5f786, type: 3}
   _particlePosition: {fileID: 2070938948605030119}

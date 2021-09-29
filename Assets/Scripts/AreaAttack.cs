@@ -55,6 +55,7 @@ public class AreaAttack : MonoBehaviour
                 }
 
                 _currentArea = StartCoroutine(StartAreaAttack());
+                _healthThreshold = (float)_currentHealth;
                 _healthThreshold -= .1f;
             }
         }
@@ -67,6 +68,7 @@ public class AreaAttack : MonoBehaviour
         _attackReady = false;
         GameObject sphere = null;
         GameObject sphere1 = null;
+        GameObject sphere2 = null;
 
         float tempSpeed = _agent.speed;
         //stops movement
@@ -76,20 +78,20 @@ public class AreaAttack : MonoBehaviour
         dash.DashReady = false;
 
         Vector3 largeRadius;
-        largeRadius.x = 14;
-        largeRadius.y = 14;
-        largeRadius.z = 14;
+        largeRadius.x = 16;
+        largeRadius.y = 16;
+        largeRadius.z = 16;
 
         yield return new WaitForSeconds(.75f);
         //attacks
         if (_phaseTwo == false)
         {
-            for(int i=0; i<2;i++)
+            for(int i=0; i<5;i++)
             {
                 sphere1 = Instantiate(_sphereVisuals, _areaAttackSpot.position, _areaAttackSpot.rotation);
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(.1f);
                 Destroy(sphere1);
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(.1f);
             }
             sphere = Instantiate(_sphereVisuals, _areaAttackSpot.position, _areaAttackSpot.rotation);
             while(_timeElapsed <= 1.5f)
@@ -97,7 +99,6 @@ public class AreaAttack : MonoBehaviour
                 Collider[] hit = Physics.OverlapSphere(_areaAttackSpot.position, _attackRadius, _enemyLayer);
                 foreach (Collider player in hit)
                 {
-                    Player playerObject = player.gameObject.GetComponent<Player>();
                     if (player != null)
                     {
                         IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
@@ -112,15 +113,21 @@ public class AreaAttack : MonoBehaviour
         }
         else
         {
+            for(int i=0; i<5; i++)
+            {
+                sphere2 = Instantiate(_sphereVisuals, _areaAttackPhaseTwo.position, _areaAttackPhaseTwo.rotation);
+                sphere2.transform.localScale = largeRadius;
+                yield return new WaitForSeconds(.1f);
+                Destroy(sphere2);
+                yield return new WaitForSeconds(.1f);
+            }
             sphere = Instantiate(_sphereVisuals, _areaAttackPhaseTwo.position, _areaAttackPhaseTwo.rotation);
             sphere.transform.localScale = largeRadius;
-            yield return new WaitForSeconds(.5f);
             while (_timeElapsed <= 3f)
             {
-                Collider[] hit = Physics.OverlapSphere(_areaAttackPhaseTwo.position, 7f, _enemyLayer);
+                Collider[] hit = Physics.OverlapSphere(_areaAttackPhaseTwo.position, 8f, _enemyLayer);
                 foreach (Collider player in hit)
                 {
-                    Player playerObject = player.gameObject.GetComponent<Player>();
                     if (player != null)
                     {
                         IDamageable playerDmg = player.gameObject.GetComponent<IDamageable>();
